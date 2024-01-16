@@ -37,14 +37,14 @@ public class Task {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id", unique = true)
+        @Column(name = "id", unique = true) // NOME DA TABELA E NÃO DA CLASSE
         private Long id;
 
         @ManyToOne
-        @JoinColumn(name = "user_id", nullable = false, updatable = false)
+        @JoinColumn(name = "user_id", nullable = false, updatable = false) // NOME DA TABELA E NÃO DA CLASSE
         private User user;
 
-        @Column(name = "description", length = 255, nullable = false)
+        @Column(name = "description", length = 255, nullable = false) // NOME DA TABELA E NÃO DA CLASSE
         @NotNull
         @NotEmpty
         @Size(min = 1, max = 255)
