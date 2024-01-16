@@ -39,9 +39,6 @@ public class UserService {
     @Autowired // não se instancia a classe UserRepository, o Spring faz isso
     private UserRepository userRepository;
 
-    @Autowired
-    private TaskRepository taskRepository;
-
     public User findById(Long id) {
         Optional<User> user = this.userRepository.findById(id);
         return user.orElseThrow(() -> new RuntimeException("Usuário não encontrado! Id: " + id + ", Tipo: " + User.class.getName())); // retorna o usuário ou lança uma exceção
@@ -51,7 +48,6 @@ public class UserService {
         public User create(User obj) {
         obj.setId(null); // garante que o usuário será salvo e não atualizado
         obj =  this.userRepository.save(obj);
-        this.taskRepository.saveAll(obj.getTasks());
         return obj;
     }
 
